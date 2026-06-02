@@ -1,1 +1,23 @@
-#apt-get update && apt-get install nano
+#!!!!!!!!!!!!!!!!!!44444444!!!!!!!!!!!!!!!!!!!!!!!!!!
+# (ISP)sed -i 's/^pool/#pool/' /etc/chrony.conf
+# (ISP)vim /etc/chrony.conf 
+# (ISP)>>>>>>> local stratum 5 
+# (ISP)>>>>>>> server ntp0.ntp-servers.net iburst prefer minstratum 4
+# (ISP)>>>>>>> allow 0.0.0.0/0
+# (ISP) systemctl restart chronyd  
+# (OTHER) sed -i 's/^pool/#pool/' /etc/chrony.conf
+# (OTHER) echo "server 172.16.(1/2).1 iburst" >> /etc/chrony.conf
+# (OTHER) systemctl restart chronyd
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
