@@ -1,0 +1,37 @@
+#!!!!!!!!!!!!!!!!!!22222222222!!!!!!!!!!!!!!!!!!!!!!!!!!
+# (HQ-SRV) lsblk 
+# (HQ-SRV) mdadm --create /dev/md0 -l 0 -n 2 /dev/sdb /dev/sdc
+# (HQ-SRV) mdadm --detail --scan --verbose | tee -a /etc/mdadm.conf
+# (HQ-SRV) mkfs.ext4 /dev/md0
+# (HQ-SRV) mkdir /raid
+# (HQ-SRV) echo "/dev/md0 /raid ext4 defaults 0 0" >> /etc/fstab
+# (HQ-SRV) moubt -av
+
+#!!!!!!!!!!!!!!!!!!3333333333333!!!!!!!!!!!!!!!!!!!!!!!!!!
+# (HQ-SRV) install nfs-server
+# (HQ-SRV) mkdir /raid/nfs
+# (HQ-SRV) chmod -R 777 /raid/nfs
+# (HQ-SRV) vim /etc/exports
+# (HQ-SRV) >>>>>>> /raid/nfs 192.168.200.0/28(rw,no_root_squash,no_subtree_check)
+# (HQ-SRV) exportfs -arv
+# (HQ-SRV) systemctl enable --now nfs-server
+
+# (HQ-CLI) mkdir /mnt/nfs
+# (HQ-CLI) chmod -R 777 /mnt/nfs
+# (HQ-CLI) vim /etc/fstab
+# (HQ-CLI) >>>>>>> 192.168.100.2:/raid/nfs /mnt/nfs nfs defaults,_netdev 0 0
+# (HQ-CLI) mount -av
+#proverka
+# (HQ-CLI) echo "hi" >> /mnt/nfs/test.txt
+# (HQ-SRV) cat /raid/nfs/test.txt
+
+#!!!!!!!!!!!!!!!!!!44444444!!!!!!!!!!!!!!!!!!!!!!!!!!
+# (ISP)sed -i 's/^pool/#pool/' /etc/chrony.conf
+# (ISP)vim /etc/chrony.conf 
+# (ISP)>>>>>>> local stratum 5 
+# (ISP)>>>>>>> server ntp0.ntp-servers.net iburst prefer minstratum 4
+# (ISP)>>>>>>> allow 0.0.0.0/0
+# (ISP) systemctl restart chronyd  
+# (OTHER) sed -i 's/^pool/#pool/' /etc/chrony.conf
+# (OTHER) echo "server 172.16.(1/2).1 iburst" >> /etc/chrony.conf
+# (OTHER) systemctl restart chronyd
