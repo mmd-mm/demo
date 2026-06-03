@@ -12,21 +12,3 @@
 # >>>>>> bantime = 60
 # systemctl restart fail2ban
 # (proverka) ssh sshuser@192.168.1.2 -p 2026
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
