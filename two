@@ -35,3 +35,19 @@
 # (OTHER) sed -i 's/^pool/#pool/' /etc/chrony.conf
 # (OTHER) echo "server 172.16.(1/2).1 iburst" >> /etc/chrony.conf
 # (OTHER) systemctl restart chronyd
+
+#!!!!!!!!!!!!!!!!!!555555555!!!!!!!!!!!!!!!!!!!!!!!!!!
+# (BR-SRV) apt-get update && apt-get install –y ansible sshpass
+# (BR-SRV) vim /etc/ansible/hosts
+# >>>>>>> br-rtr ansible_host=172.16.2.2 ansible_user=net_admin ansible_password=P@ssword
+# >>>>>>> hq-rtr ansible_host=172.16.1.2 ansible_user=net_admin ansible_password=P@ssword
+# >>>>>>> hq-srv ansible_host=192.168.100.2 ansible_user=sshuser ansible_password=P@ssword ansible_port=2026
+# >>>>>>> hq-cli ansible_host=192.168.200.3 ansible_user=user ansible_password=resu
+# >>>>>>> [all:vars]
+# >>>>>>> ansible_python_interpreter=/esr/bin/python3
+# (OTHER) systemctl enable --now sshd
+# (BR-SRV) vim /etc/ansible/ansible.cfg
+# >>>>>>> (#')investory = /etc/ansible/hosts
+# >>>>>>> (#')host_key_checking = False
+# (BR-SRV) cd /etc/ansible
+# (BR-SRV) ansible -m ping all
