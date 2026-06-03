@@ -1,0 +1,32 @@
+#!!!!!!!!!!!!!9999999999999!!!!!!!!!!!!!
+# apt-g install fail2ban -y
+# systemctl enable --now fail2ban
+# vim /etc/fail2ban/jail.local
+# >>>>>> [sshd]
+# >>>>>> enabled = true
+# >>>>>> filter = sshd
+# >>>>>> action = nftables[name=SSH, port=2026, protocol=tcp]
+# >>>>>> logpath = /var/log/auth.log
+# >>>>>> findtimeт = 600
+# >>>>>> maxretry = 3
+# >>>>>> bantime = 60
+# systemctl restart fail2ban
+# (proverka) ssh sshuser@192.168.1.2 -p 2026
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
