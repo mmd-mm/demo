@@ -6,6 +6,7 @@
 # (HQ-SRV) mkdir /raid
 # (HQ-SRV) echo "/dev/md0 /raid ext4 defaults 0 0" >> /etc/fstab
 # (HQ-SRV) moubt -av
+# (HQ-SRV) lsblk 
 
 #!!!!!!!!!!!!!!!!!!3333333333333!!!!!!!!!!!!!!!!!!!!!!!!!!
 # (HQ-SRV) install nfs-server
